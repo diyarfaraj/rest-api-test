@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import logo from "./logo.svg";
 import unirest from "unirest";
 import "./App.css";
+require("dotenv").config();
 
 function App() {
   const [term, setTerm] = useState([]);
@@ -16,7 +17,7 @@ function App() {
   const getPodcasts = async () => {
     const response = await fetch(api_url, {
       method: "GET",
-      headers: { "X-ListenAPI-Key": "ae87cec695cc4454a601639d06c9274a" },
+      headers: { "X-ListenAPI-Key": process.env.REACT_APP_API_KEY },
     });
     const data = await response.json();
 
